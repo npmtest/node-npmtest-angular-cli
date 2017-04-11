@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-angular-cli/angular-cli/ember-cli/lib/ui/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-angular-cli">npmtest-angular-cli (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-angular-cli/angular-cli/ember-cli/lib/ui/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">31.43% <small>(22 / 70)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">31.88% <small>(22 / 69)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-angular-cli/angular-cli/ember-cli/lib/ui/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var ora              = require('ora');
+var Promise          = require('../ext/promise');
+var EOL              = require('os').EOL;
+var chalk            = require('chalk');
+var writeError       = require('./write-error');
+&nbsp;
+var DEFAULT_WRITE_LEVEL = 'INFO';
+&nbsp;
+// Note: You should use `ui.outputStream`, `ui.inputStream` and `ui.write()`
+//       instead of `process.stdout` and `console.log`.
+//       Thus the pleasant progress indicator automatically gets
+//       interrupted and doesn't mess up the output! -&gt; Convenience :P
+&nbsp;
+module.exports = UI;
+&nbsp;
+/*
+  @constructor
+&nbsp;
+  The UI provides the CLI with a unified mechanism for providing output and
+  requesting input from the user. This becomes useful when wanting to adjust
+  logLevels, or mock input/output for tests.
+&nbsp;
+  new UI({
+    inputStream: process.stdin,
+    outputStream: process.stdout,
+    writeLevel: 'DEBUG' | 'INFO' | 'WARNING' | 'ERROR',
+    ci: true | false
+  });
+&nbsp;
+**/
+&nbsp;
+<span class="fstat-no" title="function not covered" >function UI(options) {</span>
+<span class="cstat-no" title="statement not covered" >  var spinner = this.spinner = ora({ color: 'green' });</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.through  = require('through');</span>
+&nbsp;
+  // Output stream
+<span class="cstat-no" title="statement not covered" >  this.actualOutputStream = options.outputStream;</span>
+<span class="cstat-no" title="statement not covered" >  this.outputStream = this.through(<span class="fstat-no" title="function not covered" >function(data) {</span></span>
+<span class="cstat-no" title="statement not covered" >    spinner.stop();</span>
+<span class="cstat-no" title="statement not covered" >    this.emit('data', data);</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.outputStream.setMaxListeners(0);</span>
+<span class="cstat-no" title="statement not covered" >  this.outputStream.pipe(this.actualOutputStream);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.inputStream = options.inputStream;</span>
+<span class="cstat-no" title="statement not covered" >  this.errorStream = options.errorStream;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.errorLog = options.errorLog || [];</span>
+<span class="cstat-no" title="statement not covered" >  this.writeLevel = options.writeLevel || DEFAULT_WRITE_LEVEL;</span>
+<span class="cstat-no" title="statement not covered" >  this.ci = !!options.ci;</span>
+}
+&nbsp;
+/**
+  Unified mechanism to write a string to the console.
+  Optionally include a writeLevel, this is used to decide if the specific
+  logging mechanism should or should not be printed.
+&nbsp;
+  @method write
+  @param {String} data
+  @param {Number} writeLevel
+*/
+UI.prototype.write = <span class="fstat-no" title="function not covered" >function(data, writeLevel) {</span>
+<span class="cstat-no" title="statement not covered" >  if (writeLevel === 'ERROR') {</span>
+<span class="cstat-no" title="statement not covered" >    this.errorStream.write(data);</span>
+  } else <span class="cstat-no" title="statement not covered" >if (this.writeLevelVisible(writeLevel)) {</span>
+<span class="cstat-no" title="statement not covered" >    this.outputStream.write(data);</span>
+  }
+};
+&nbsp;
+/**
+  Unified mechanism to write a string and new line to the console.
+  Optionally include a writeLevel, this is used to decide if the specific
+  logging mechanism should or should not be printed.
+  @method writeLine
+  @param {String} data
+  @param {Number} writeLevel
+*/
+UI.prototype.writeLine = <span class="fstat-no" title="function not covered" >function(data, writeLevel) {</span>
+<span class="cstat-no" title="statement not covered" >  this.write(data + EOL, writeLevel);</span>
+};
+&nbsp;
+/**
+  Helper method to write a string with the DEBUG writeLevel and gray chalk
+  @method writeDebugLine
+  @param {String} data
+*/
+UI.prototype.writeDebugLine = <span class="fstat-no" title="function not covered" >function(data) {</span>
+<span class="cstat-no" title="statement not covered" >  this.writeLine(chalk.gray(data), 'DEBUG');</span>
+};
+&nbsp;
+/**
+  Helper method to write a string with the INFO writeLevel and cyan chalk
+  @method writeInfoLine
+  @param {String} data
+*/
+UI.prototype.writeInfoLine = <span class="fstat-no" title="function not covered" >function(data) {</span>
+<span class="cstat-no" title="statement not covered" >  this.writeLine(chalk.cyan(data), 'INFO');</span>
+};
+&nbsp;
+/**
+  Helper method to write a string with the WARNING writeLevel and yellow chalk.
+  Optionally include a test. If falsy, the warning will be printed. By default, warnings
+  will be prepended with WARNING text when printed.
+  @method writeWarnLine
+  @param {String} data
+  @param {Boolean} test
+  @param {Boolean} prepend
+*/
+UI.prototype.writeWarnLine = <span class="fstat-no" title="function not covered" >function(data, test, prepend) {</span>
+<span class="cstat-no" title="statement not covered" >  if (test) { <span class="cstat-no" title="statement not covered" >return; </span>}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  data = this.prependLine('WARNING', data, prepend);</span>
+<span class="cstat-no" title="statement not covered" >  this.writeLine(chalk.yellow(data), 'WARNING', test);</span>
+};
+&nbsp;
+/**
+  Helper method to write a string with the WARNING writeLevel and yellow chalk.
+  Optionally include a test. If falsy, the deprecation will be printed. By default deprecations
+  will be prepended with DEPRECATION text when printed.
+  @method writeDeprecateLine
+  @param {String} data
+  @param {Boolean} test
+  @param {Boolean} prepend
+*/
+UI.prototype.writeDeprecateLine = <span class="fstat-no" title="function not covered" >function(data, test, prepend) {</span>
+<span class="cstat-no" title="statement not covered" >  data = this.prependLine('DEPRECATION', data, prepend);</span>
+<span class="cstat-no" title="statement not covered" >  this.writeWarnLine(data, test, false);</span>
+};
+&nbsp;
+/**
+  Utility method to prepend a line with a flag-like string (i.e., WARNING).
+  @method prependLine
+  @param {String} prependData
+  @param {String} data
+  @param {Boolean} prepend
+*/
+UI.prototype.prependLine = <span class="fstat-no" title="function not covered" >function(prependData, data, prepend) {</span>
+<span class="cstat-no" title="statement not covered" >  if (typeof prepend === 'undefined' || prepend) {</span>
+<span class="cstat-no" title="statement not covered" >    data = prependData + ': ' + data;</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return data;</span>
+};
+&nbsp;
+/**
+  Unified mechanism to an Error to the console.
+  This will occure at a writeLevel of ERROR
+&nbsp;
+  @method writeError
+  @param {Error} error
+*/
+UI.prototype.writeError = <span class="fstat-no" title="function not covered" >function(error) {</span>
+<span class="cstat-no" title="statement not covered" >  writeError(this, error);</span>
+};
+&nbsp;
+/**
+  Sets the write level for the UI. Valid write levels are 'DEBUG', 'INFO',
+  'WARNING', and 'ERROR'.
+&nbsp;
+  @method setWriteLevel
+  @param {String} level
+*/
+UI.prototype.setWriteLevel = <span class="fstat-no" title="function not covered" >function(level) {</span>
+<span class="cstat-no" title="statement not covered" >  if (Object.keys(this.WRITE_LEVELS).indexOf(level) === -1) {</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error('Unknown write level. Valid values are \'DEBUG\', \'INFO\', \'WARNING\', and \'ERROR\'.');</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.writeLevel = level;</span>
+};
+&nbsp;
+UI.prototype.startProgress = <span class="fstat-no" title="function not covered" >function(message/*, stepString*/) {</span>
+<span class="cstat-no" title="statement not covered" >  if (this.writeLevelVisible('INFO')) {</span>
+<span class="cstat-no" title="statement not covered" >    if (this.ci) {</span>
+<span class="cstat-no" title="statement not covered" >      this.writeLine(message);</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      this.spinner.text = message;</span>
+<span class="cstat-no" title="statement not covered" >      this.spinner.start();</span>
+    }
+  }
+};
+&nbsp;
+UI.prototype.stopProgress = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  if (this.writeLevelVisible('INFO') &amp;&amp; !this.ci) {</span>
+<span class="cstat-no" title="statement not covered" >    this.spinner.stop();</span>
+  }
+};
+&nbsp;
+UI.prototype.prompt = <span class="fstat-no" title="function not covered" >function(questions, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var inquirer = require('inquirer');</span>
+&nbsp;
+  // If no callback was provided, automatically return a promise
+<span class="cstat-no" title="statement not covered" >  if (callback) {</span>
+<span class="cstat-no" title="statement not covered" >    inquirer.prompt(questions, callback);</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    return new Promise(<span class="fstat-no" title="function not covered" >function(resolve) {</span></span>
+<span class="cstat-no" title="statement not covered" >      inquirer.prompt(questions, resolve);</span>
+    });
+  }
+};
+&nbsp;
+/**
+  @property WRITE_LEVELS
+  @private
+  @type Object
+*/
+UI.prototype.WRITE_LEVELS = {
+  'DEBUG': 1,
+  'INFO': 2,
+  'WARNING': 3,
+  'ERROR': 4
+};
+&nbsp;
+/**
+  Whether or not the specified write level should be printed by this UI.
+&nbsp;
+  @method writeLevelVisible
+  @private
+  @param {String} writeLevel
+  @return {Boolean}
+*/
+UI.prototype.writeLevelVisible = <span class="fstat-no" title="function not covered" >function(writeLevel) {</span>
+<span class="cstat-no" title="statement not covered" >  var levels = this.WRITE_LEVELS;</span>
+<span class="cstat-no" title="statement not covered" >  writeLevel = writeLevel || DEFAULT_WRITE_LEVEL;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return levels[writeLevel] &gt;= levels[this.writeLevel];</span>
+};
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 12:52:00 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
