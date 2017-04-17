@@ -1,7 +1,7 @@
 # test coverage for  [angular-cli (v1.0.0-beta.28.3)](https://github.com/angular/angular-cli)  [![npm package](https://img.shields.io/npm/v/npmtest-angular-cli.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-angular-cli) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-angular-cli.svg)](https://travis-ci.org/npmtest/node-npmtest-angular-cli)
 #### CLI tool for Angular
 
-[![NPM](https://nodei.co/npm/angular-cli.png?downloads=true)](https://www.npmjs.com/package/angular-cli)
+[![NPM](https://nodei.co/npm/angular-cli.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/angular-cli)
 
 | git-branch : | [alpha](https://github.com/npmtest/node-npmtest-angular-cli/tree/alpha)|
 |--:|:--|
@@ -9,11 +9,17 @@
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-angular-cli/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-angular-cli/build/test-report.html)|
 | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-angular-cli/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-angular-cli/tree/gh-pages/build)|
 
-[![istanbul-coverage](https://npmtest.github.io/node-npmtest-angular-cli/build/screenCapture.buildCustomOrg.browser.coverage.html.png)](https://npmtest.github.io/node-npmtest-angular-cli/build/coverage.html/index.html)
+- [https://npmtest.github.io/node-npmtest-angular-cli/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-angular-cli/build/coverage.html/index.html)
 
-[![test-report](https://npmtest.github.io/node-npmtest-angular-cli/build/screenCapture.buildCustomOrg.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmtest%252Fnode-npmtest-angular-cli%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-angular-cli/build/test-report.html)
+[![istanbul-coverage](https://npmtest.github.io/node-npmtest-angular-cli/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://npmtest.github.io/node-npmtest-angular-cli/build/coverage.html/index.html)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-angular-cli/build/screenCapture.buildApidoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-angular-cli%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-angular-cli/build/apidoc.html)
+- [https://npmtest.github.io/node-npmtest-angular-cli/build/test-report.html](https://npmtest.github.io/node-npmtest-angular-cli/build/test-report.html)
+
+[![test-report](https://npmtest.github.io/node-npmtest-angular-cli/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-angular-cli/build/test-report.html)
+
+- [https://npmdoc.github.io/node-npmdoc-angular-cli/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-angular-cli/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-angular-cli/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-angular-cli/build/apidoc.html)
 
 ![npmPackageListing](https://npmtest.github.io/node-npmtest-angular-cli/build/screenCapture.npmPackageListing.svg)
 
@@ -136,13 +142,11 @@
     },
     "maintainers": [
         {
-            "name": "angular-cli",
-            "email": "hansl@google.com"
+            "name": "angular-cli"
         }
     ],
     "directories": {},
-    "deprecated": "angular-cli has been renamed to @angular/cli. Please update your dependencies.",
-    "readme": "ERROR: No README data found!"
+    "deprecated": "angular-cli has been renamed to @angular/cli. Please update your dependencies."
 }
 ```
 
