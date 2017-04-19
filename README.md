@@ -1,4 +1,7 @@
-# test coverage for  [angular-cli (v1.0.0-beta.28.3)](https://github.com/angular/angular-cli)  [![npm package](https://img.shields.io/npm/v/npmtest-angular-cli.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-angular-cli) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-angular-cli.svg)](https://travis-ci.org/npmtest/node-npmtest-angular-cli)
+# npmtest-angular-cli
+
+#### test coverage for  [angular-cli (v1.0.0-beta.28.3)](https://github.com/angular/angular-cli)  [![npm package](https://img.shields.io/npm/v/npmtest-angular-cli.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-angular-cli) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-angular-cli.svg)](https://travis-ci.org/npmtest/node-npmtest-angular-cli)
+
 #### CLI tool for Angular
 
 [![NPM](https://nodei.co/npm/angular-cli.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/angular-cli)
